@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: process.env.NODE_ENV === 'production' 
-    ? '/semicolon-website/' // Ajuste conforme seu repositório GitHub
+    ? '/index/' // Repositório: developmentsemicolon/index
     : '/',
   build: {
     outDir: 'dist',
