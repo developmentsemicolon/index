@@ -5,6 +5,16 @@ import { motion } from 'framer-motion'
 export default function Hero() {
   const { t } = useTranslation()
   const particlesRef = useRef<HTMLDivElement>(null)
+  const trustBadges = [
+    { title: t('cleanmac.hero_badge_downloads'), subtitle: t('cleanmac.hero_badge_downloads_sub') },
+    { title: t('cleanmac.hero_badge_rating'), subtitle: t('cleanmac.hero_badge_rating_sub') },
+    { title: t('cleanmac.hero_badge_security'), subtitle: t('cleanmac.hero_badge_security_sub') },
+  ]
+  const stats = [
+    { value: '100k+', label: t('cleanmac.stat_downloads') },
+    { value: '4.9/5', label: t('cleanmac.stat_rating') },
+    { value: '30+', label: t('cleanmac.stat_countries') },
+  ]
 
   useEffect(() => {
     if (!particlesRef.current) return
@@ -143,6 +153,23 @@ export default function Hero() {
         </motion.p>
 
         <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.9 }}
+        >
+          {trustBadges.map((badge) => (
+            <div
+              key={badge.title}
+              className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-6 py-4 text-left shadow-[0_12px_30px_rgba(0,0,0,0.18)]"
+            >
+              <div className="text-lg font-semibold text-white">{badge.title}</div>
+              <div className="text-sm text-white/70 mt-1">{badge.subtitle}</div>
+            </div>
+          ))}
+        </motion.div>
+
+        <motion.div
           className="flex gap-5 justify-center flex-wrap mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -167,23 +194,26 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          className="flex gap-16 justify-center flex-wrap mt-10"
+          className="text-white/80 text-sm mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.1 }}
+        >
+          {t('cleanmac.hero_chipset')}
+        </motion.div>
+
+        <motion.div
+          className="flex gap-12 justify-center flex-wrap mt-2"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.2 }}
         >
-          <div className="text-center">
-            <div className="text-3xl font-bold mb-1">100%</div>
-            <div className="text-sm text-white/70 uppercase tracking-wider">{t('cleanmac.stat_free')}</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold mb-1">Open</div>
-            <div className="text-sm text-white/70 uppercase tracking-wider">{t('cleanmac.stat_opensource')}</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold mb-1">Fast</div>
-            <div className="text-sm text-white/70 uppercase tracking-wider">{t('cleanmac.stat_fast')}</div>
-          </div>
+          {stats.map((stat) => (
+            <div key={stat.label} className="text-center">
+              <div className="text-4xl font-extrabold mb-1 drop-shadow-md">{stat.value}</div>
+              <div className="text-sm text-white/70 uppercase tracking-wider max-w-[120px]">{stat.label}</div>
+            </div>
+          ))}
         </motion.div>
       </div>
 

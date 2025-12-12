@@ -79,7 +79,7 @@ export default function CleanMacFooter() {
             </p>
             <div className="flex gap-4 mt-4">
               <a
-                href="https://github.com/developmentsemicolon/Cleanmymac"
+                href="https://github.com/developmentsemicolon"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-10 h-10 bg-[rgba(255,255,255,0.1)] rounded-full text-[rgba(255,255,255,0.8)] transition-all duration-300 no-underline hover:bg-[rgba(255,255,255,0.2)] hover:text-white hover:translate-y-[-2px]"

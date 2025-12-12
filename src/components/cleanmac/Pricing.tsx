@@ -53,12 +53,34 @@ export default function Pricing() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-semibold text-sm border border-purple-200 shadow-sm mb-4">
+            {t('cleanmac.pricing_trust_badge')}
+          </div>
           <h2 className="text-[42px] font-bold mb-4 text-gray-900">
             {t('cleanmac.pricing_title')}
           </h2>
           <p className="text-lg text-gray-600">
             {t('cleanmac.pricing_subtitle')}
           </p>
+        </motion.div>
+
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-3xl mx-auto mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          {[1, 2, 3].map((item) => (
+            <div
+              key={item}
+              className="rounded-2xl border border-gray-200 bg-white px-4 py-3 text-center shadow-[0_10px_25px_rgba(0,0,0,0.05)]"
+            >
+              <div className="text-base font-semibold text-gray-800">
+                {t(`cleanmac.pricing_trust_stat${item}`)}
+              </div>
+            </div>
+          ))}
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[30px] max-w-[800px] mx-auto mt-[50px]">

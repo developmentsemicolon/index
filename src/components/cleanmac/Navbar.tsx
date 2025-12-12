@@ -75,6 +75,12 @@ export default function CleanMacNavbar() {
             {t('cleanmac.nav_features')}
           </button>
           <button
+            onClick={() => scrollToSection('comparisons')}
+            className="text-gray-900 font-semibold text-[15px] relative py-1 hover:text-purple-600 transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-purple-600 after:to-pink-500 after:transition-all hover:after:w-full"
+          >
+            {t('cleanmac.nav_compare')}
+          </button>
+          <button
             onClick={() => scrollToSection('pricing')}
             className="text-gray-900 font-semibold text-[15px] relative py-1 hover:text-purple-600 transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-purple-600 after:to-pink-500 after:transition-all hover:after:w-full"
           >
@@ -139,6 +145,12 @@ export default function CleanMacNavbar() {
               className="block w-full text-left text-gray-900 font-semibold py-2 hover:text-purple-600 transition-colors"
             >
               {t('cleanmac.nav_features')}
+            </button>
+            <button
+              onClick={() => scrollToSection('comparisons')}
+              className="block w-full text-left text-gray-900 font-semibold py-2 hover:text-purple-600 transition-colors"
+            >
+              {t('cleanmac.nav_compare')}
             </button>
             <button
               onClick={() => scrollToSection('pricing')}
