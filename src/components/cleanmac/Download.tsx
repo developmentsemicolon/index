@@ -37,10 +37,10 @@ export default function Download() {
           <div>
             <img
               src="/images/cleanmac-logo.png"
-              alt="CleanMac App"
+              alt={t('cleanmac.app_name')}
               className="w-[100px] h-[100px] mx-auto mb-[30px] rounded-[20px]"
             />
-            <h3 className="text-[32px] font-bold mb-5 text-gray-900">macOS App</h3>
+            <h3 className="text-[32px] font-bold mb-5 text-gray-900">{t('cleanmac.download_macos_app')}</h3>
             
             {/* Compatibility badges */}
             <div className="flex gap-2.5 justify-center mb-[30px]">

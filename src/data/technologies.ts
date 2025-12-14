@@ -403,6 +403,17 @@ export const technologies: Technology[] = [
       pt: 'Aplicações Web Progressivas',
       es: 'Aplicaciones Web Progresivas'
     }
+  },
+  {
+    id: 'electron',
+    name: 'Electron',
+    category: 'mobile',
+    description: {
+      en: 'Framework for building cross-platform desktop applications with web technologies',
+      pt: 'Framework para construir aplicações desktop multiplataforma com tecnologias web',
+      es: 'Framework para construir aplicaciones de escritorio multiplataforma con tecnologías web'
+    },
+    link: 'https://www.electronjs.org'
   }
 ];
 

@@ -49,12 +49,25 @@ export default function SuccessCases() {
                 </span>
               </div>
             ) : (
-              <img
-                src={caseItem.companyLogo}
-                alt={caseItem.companyName}
-                className="max-h-12 w-auto object-contain transition-all duration-300 grayscale group-hover:grayscale-0"
-                loading="lazy"
-              />
+              <>
+                <img
+                  src={caseItem.companyLogo}
+                  alt={caseItem.companyName}
+                  className="max-h-12 w-auto object-contain transition-all duration-300 grayscale group-hover:grayscale-0"
+                  loading="lazy"
+                />
+                {caseItem.id === 'cleanmac' && (
+                  <span className="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight">
+                    {' '} CleanMac App
+                  </span>
+                )}
+
+                {caseItem.id === 'dalton' && (  
+                  <span className="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight">
+                    {' '} &nbsp; Dalton
+                  </span>
+                )}
+              </>
             )}
           </div>
 

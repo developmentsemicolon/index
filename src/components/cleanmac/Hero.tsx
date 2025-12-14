@@ -116,7 +116,7 @@ export default function Hero() {
 
         <motion.img
           src="/images/cleanmac-logo.png"
-          alt="CleanMac App"
+          alt={t('cleanmac.app_name')}
           className="w-36 h-36 mx-auto mb-8 rounded-3xl shadow-2xl animate-[float_4s_ease-in-out_infinite]"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}

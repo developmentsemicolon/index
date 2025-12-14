@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Moon, Sun } from 'lucide-react'
 import CleanMacLanguageSelector from './LanguageSelector'
 
@@ -9,6 +9,8 @@ export default function CleanMacNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [darkMode, setDarkMode] = useState(false)
   const { t } = useTranslation()
+  const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,10 +40,21 @@ export default function CleanMacNavbar() {
   }
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-      setIsMenuOpen(false)
+    setIsMenuOpen(false)
+    
+    // Se estiver em qualquer página que não seja a principal (/cleanmacapp), navegar para a página principal com hash
+    if (location.pathname !== '/cleanmacapp') {
+      navigate(`/cleanmacapp#${id}`)
+    } else {
+      // Se já estiver na página principal, navegar para o hash
+      navigate(`#${id}`, { replace: true })
+      // Fazer scroll para a seção
+      setTimeout(() => {
+        const element = document.getElementById(id)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 50)
     }
   }
 
@@ -60,10 +73,10 @@ export default function CleanMacNavbar() {
         >
           <img 
             src="/images/cleanmac-logo.png" 
-            alt="CleanMac App" 
+            alt={t('cleanmac.app_name')} 
             className="w-11 h-11 rounded-[10px] shadow-[0_2px_8px_rgba(0,0,0,0.1)] hover:rotate-[5deg] hover:scale-110 transition-transform duration-300"
           />
-          <span>CleanMac App</span>
+          <span>{t('cleanmac.app_name')}</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -101,7 +114,7 @@ export default function CleanMacNavbar() {
           <button
             onClick={toggleDarkMode}
             className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            aria-label="Toggle dark mode"
+            aria-label={t('cleanmac.aria_toggle_dark_mode')}
           >
             {darkMode ? (
               <Sun className="w-5 h-5 text-yellow-500" />
@@ -116,7 +129,7 @@ export default function CleanMacNavbar() {
           <button
             onClick={toggleDarkMode}
             className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            aria-label="Toggle dark mode"
+            aria-label={t('cleanmac.aria_toggle_dark_mode')}
           >
             {darkMode ? (
               <Sun className="w-5 h-5 text-yellow-500" />
@@ -127,7 +140,7 @@ export default function CleanMacNavbar() {
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="flex flex-col gap-1.5 p-1.5"
-            aria-label="Toggle navigation"
+            aria-label={t('cleanmac.aria_toggle_navigation')}
           >
             <span className={`w-6 h-0.5 bg-gray-900 rounded transition-all ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
             <span className={`w-6 h-0.5 bg-gray-900 rounded transition-all ${isMenuOpen ? 'opacity-0' : ''}`}></span>

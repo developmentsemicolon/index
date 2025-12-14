@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useFavicon } from '../hooks/useFavicon'
 import CleanMacNavbar from '../components/cleanmac/Navbar'
 import CleanMacFooter from '../components/cleanmac/Footer'
 
@@ -17,6 +18,7 @@ interface StripeSession {
 
 export default function CleanMacDownload() {
   const { t } = useTranslation()
+  useFavicon('cleanmac')
   const [searchParams] = useSearchParams()
   const [status, setStatus] = useState<Status>('loading')
   const [errorMessage, setErrorMessage] = useState<string>('')
@@ -26,7 +28,7 @@ export default function CleanMacDownload() {
   useEffect(() => {
     if (!sessionId) {
       setStatus('error')
-      setErrorMessage('Session ID não encontrado na URL')
+      setErrorMessage(t('cleanmac.download_page_error_session_not_found'))
       return
     }
 
@@ -36,14 +38,14 @@ export default function CleanMacDownload() {
         const response = await fetch(workerUrl)
 
         if (!response.ok) {
-          throw new Error(`Erro ao validar pagamento: ${response.status}`)
+          throw new Error(`${t('cleanmac.download_page_error_validation_failed')}: ${response.status}`)
         }
 
         const data: StripeSession = await response.json()
         // Verificar se há erro na resposta
         if (data.error) {
           setStatus('error')
-          setErrorMessage(data.error.message || 'Erro ao validar pagamento')
+          setErrorMessage(data.error.message || t('cleanmac.download_page_error_validation_failed'))
           return
         }
 
@@ -53,7 +55,7 @@ export default function CleanMacDownload() {
           setErrorMessage('')
         } else {
           setStatus('error')
-          setErrorMessage('Pagamento não confirmado. Por favor, verifique o status do pagamento.')
+          setErrorMessage(t('cleanmac.download_page_error_payment_not_confirmed'))
         }
       } catch (error) {
         console.error('Erro ao validar pagamento:', error)
@@ -61,7 +63,7 @@ export default function CleanMacDownload() {
         setErrorMessage(
           error instanceof Error
             ? error.message
-            : 'Erro ao conectar com o servidor. Por favor, tente novamente.'
+            : t('cleanmac.download_page_error_server_connection')
         )
       }
     }
@@ -87,7 +89,7 @@ export default function CleanMacDownload() {
               {status === 'success'
                 ? t('cleanmac.download_page_subtitle_success')
                 : status === 'loading'
-                ? 'Validando pagamento...'
+                ? t('cleanmac.download_page_validating')
                 : t('cleanmac.download_page_subtitle_error')}
             </p>
             {status === 'error' && errorMessage && (

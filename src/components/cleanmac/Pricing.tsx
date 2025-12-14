@@ -25,7 +25,7 @@ export default function Pricing() {
     if (STRIPE_PAYMENT_LINK && STRIPE_PAYMENT_LINK.includes('buy.stripe.com')) {
       window.location.href = STRIPE_PAYMENT_LINK
     } else {
-      alert('Payment system is being set up. Please try again later or download directly from GitHub.')
+      alert(t('cleanmac.pricing_payment_setup_error'))
     }
   }
 
@@ -105,7 +105,7 @@ export default function Pricing() {
                 <span className="text-[48px] font-extrabold text-purple-600">
                   {t('cleanmac.pricing_free_price')}
                 </span>
-                <span className="text-base opacity-80 text-gray-600">/forever</span>
+                <span className="text-base opacity-80 text-gray-600">/{t('cleanmac.pricing_forever')}</span>
               </div>
               <p className="text-sm opacity-80 text-gray-600">
                 {t('cleanmac.pricing_free_desc')}
@@ -171,7 +171,7 @@ export default function Pricing() {
                 <span className="text-[48px] font-extrabold text-white">
                   {t('cleanmac.pricing_pro_price')}
                 </span>
-                <span className="text-base opacity-80 text-white">/one-time</span>
+                <span className="text-base opacity-80 text-white">/{t('cleanmac.pricing_one_time')}</span>
               </div>
               <p className="text-sm opacity-80 text-white">
                 {t('cleanmac.pricing_pro_desc')}

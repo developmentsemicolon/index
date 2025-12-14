@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
 
 const screenshots = [
-  { src: '/cleanmacapp/1.png', alt: 'CleanMac App Screenshot 1' },
-  { src: '/cleanmacapp/2.png', alt: 'CleanMac App Screenshot 2' },
-  { src: '/cleanmacapp/3.png', alt: 'CleanMac App Screenshot 3' },
-  { src: '/cleanmacapp/4.png', alt: 'CleanMac App Screenshot 4' },
+  { src: '/cleanmacapp/1.png' },
+  { src: '/cleanmacapp/2.png' },
+  { src: '/cleanmacapp/3.png' },
+  { src: '/cleanmacapp/4.png' },
 ]
 
 export default function Screenshots() {
@@ -65,7 +65,7 @@ export default function Screenshots() {
                 <div className="aspect-video bg-gray-100 dark:bg-gray-800 relative overflow-hidden">
                   <img
                     src={screenshot.src}
-                    alt={screenshot.alt}
+                    alt={`${t('cleanmac.screenshot_alt')} ${index + 1}`}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     loading="lazy"
                   />
@@ -101,13 +101,13 @@ export default function Screenshots() {
             >
               <img
                 src={selectedImage}
-                alt="Screenshot ampliado"
+                alt={t('cleanmac.screenshots_enlarged')}
                 className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
               />
               <button
                 onClick={() => setSelectedImage(null)}
                 className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-200 hover:scale-110"
-                aria-label="Fechar"
+                aria-label={t('cleanmac.aria_close')}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

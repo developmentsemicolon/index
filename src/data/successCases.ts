@@ -180,5 +180,20 @@ export const successCases: SuccessCase[] = [
     technologies: ['Web Platform', 'SaaS', 'Modern Tech'],
     featured: false
   },
+  {
+    id: 'dalton',
+    companyName: 'Dalton - Color Vision Assistant',
+    companyLogo: 'https://lh3.googleusercontent.com/MeS2L41Oz1nLZei6XDRCk_On-6094tC-fT0WyhJDKercd103s-w-lkACbCsFSEewt2_t39uo8RceKvVbHFBbShrra6M=s120',
+    website: 'https://chromewebstore.google.com/detail/dalton-color-vision-assis/eoaikgnogcllklmipcgamlkiofnblhml',
+    industry: 'Accessibility',
+    projectType: 'Chrome Extension',
+    description: {
+      en: 'Professional color adjustment tool for color vision deficiencies. Enhance web accessibility for protanopia, deuteranopia, tritanopia and more.',
+      pt: 'Ferramenta profissional de ajuste de cores para deficiências de visão de cores. Melhore a acessibilidade web para protanopia, deuteranopia, tritanopia e mais.',
+      es: 'Herramienta profesional de ajuste de colores para deficiencias de visión de colores. Mejora la accesibilidad web para protanopia, deuteranopia, tritanopia y más.'
+    },
+    technologies: ['Chrome Extension', 'Accessibility', 'Color Vision'],
+    featured: false
+  },
 ];
 

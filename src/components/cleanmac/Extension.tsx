@@ -94,10 +94,10 @@ export default function Extension() {
               <div className="p-8 text-center">
                 <img
                   src="/images/cleanmac-logo.png"
-                  alt="Extension Preview"
+                  alt={t('cleanmac.extension_preview')}
                   className="w-16 h-16 mx-auto mb-4 rounded-xl"
                 />
-                <p className="text-gray-900 dark:text-white font-semibold">CleanMac Extension</p>
+                <p className="text-gray-900 dark:text-white font-semibold">{t('cleanmac.extension_name')}</p>
               </div>
             </div>
           </motion.div>

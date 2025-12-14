@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useLocation } from 'react-router-dom'
+import { useFavicon } from '../hooks/useFavicon'
 import CleanMacNavbar from '../components/cleanmac/Navbar'
 import CleanMacFooter from '../components/cleanmac/Footer'
 import Hero from '../components/cleanmac/Hero'
@@ -13,15 +15,28 @@ import FAQ from '../components/cleanmac/FAQ'
 
 export default function CleanMacApp() {
   const { t } = useTranslation()
+  const location = useLocation()
+  useFavicon('cleanmac')
+
+  // Scroll para seção quando há hash na URL
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.substring(1) // Remove o #
+      setTimeout(() => {
+        const element = document.getElementById(id)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 100)
+    }
+  }, [location.hash])
 
   useEffect(() => {
     const origin = window?.location?.origin || 'https://cleanmac.app'
     const pageUrl = `${origin}/cleanmacapp`
-    const title = 'CleanMac App | Clean cache and optimize macOS'
-    const description =
-      'CleanMac App is a fast and transparent alternative: clean caches, logs, temporary files and browser in 1 click. No ads, no tracking and with a one-time payment.'
-    const keywords =
-      'clean my mac, cleanmymac alternative, clean cache, clean logs, clean temporary files, clean browser, clean storage, clean macbook, clean browser mac'
+    const title = t('cleanmac.page_title')
+    const description = t('cleanmac.page_description')
+    const keywords = t('cleanmac.page_keywords')
 
     const upsertMeta = (attr: 'name' | 'property', key: string, content: string) => {
       let tag = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`)
