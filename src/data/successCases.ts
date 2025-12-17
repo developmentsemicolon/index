@@ -195,5 +195,20 @@ export const successCases: SuccessCase[] = [
     technologies: ['Chrome Extension', 'Accessibility', 'Color Vision'],
     featured: false
   },
+  {
+    id: 'insuperavel',
+    companyName: 'Insuperável',
+    companyLogo: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/f0/6c/8e/f06c8e67-4c39-a9d7-564b-7d1d1f9beaa2/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/400x400ia-75.webp',
+    website: 'https://apps.apple.com/br/app/insuper%C3%A1vel/id1487091233',
+    industry: 'Media/Radio',
+    projectType: 'iOS App',
+    description: {
+      en: 'Content app for Brazilian immigrant community in the US with audio and video programming, listener community, business directory and offline podcasts',
+      pt: 'App de conteúdo para comunidade imigrante brasileira nos EUA com programação em áudio e vídeo, comunidade de ouvintes, catálogo de empresas e podcasts offline',
+      es: 'App de contenido para comunidad inmigrante brasileña en EE.UU. con programación en audio y video, comunidad de oyentes, directorio de empresas y podcasts offline'
+    },
+    technologies: ['iOS', 'Mobile App', 'Streaming', 'Podcast'],
+    featured: false
+  },
 ];
 
